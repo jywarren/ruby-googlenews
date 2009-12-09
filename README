@@ -1,0 +1,30 @@
+I was surprised that Google News has no API, so I built my own: Using HTTParty, I wrote a small Ruby library for Google News. Use it to grab google news stories and topic lists as native Ruby objects.
+
+== Quick start: 
+
+Put ‘googlenews.rb’ file in the /lib/ directory of your Rails application
+
+Googlenews.items() returns 10 of the most recent top stories.
+
+== Full API:
+
+  # Get articles for all available languages. 
+  # Pass it a # of articles and an array of language codes for which you want articles.
+  Googlenews.international(num,languages)
+    num: (integer) number of articles you want. Limit is 30, default is 10.
+    languages: (array) ex: ['es_ar','us','uk'] means Argentinian Spanish, US English and UK English. All possibilities:
+        "es_ar","au","nl_be","fr_be","en_bw","pt-BR_br","ca","fr_ca","cs_cz","es_cl","es_co","es_cu","de","es","es_us","en_et","fr","en_gh","in","en_ie","en_il","it","en_ke","hu_hu","en_my","es_mx","en_na","nl_nl","nz","en_ng","no_no","de_at","en_pk","es_pe","en_ph","pl_pl","pt-PT_pt","de_ch","fr_sn","en_sg","en_za","fr_ch","sv_se","en_tz","tr_tr","uk","us","en_ug","es_ve","vi_vn","en_zw","el_gr"
+
+  # Get latest 10 or more articles
+  Googlenews.items(num)
+    num: (integer) number of articles you want. Limit is 30, default is 10.
+
+  # Extract a topic id (string) from an article object
+  Googlenews.extract_topic(item)
+    item: (object) an article object like those returned by Googlenews.items()
+
+  # Get articles for a topic, given an article object
+  Googlenews.topic(num)
+    num: (integer) number of articles you want. Limit is 30, default is 10.
+
+
